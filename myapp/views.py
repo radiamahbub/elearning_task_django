@@ -135,6 +135,62 @@ def student_delete(request, s_id):
       StudentModel.objects.get(id = s_id).delete()
       return redirect('student_view')
 
+#---------------Teacher---------------------------
+
+def teacher_create(request):
+
+    if request.method == 'POST':
+            teacher_name = request.POST.get('teacher_name')
+            email = request.POST.get('email')
+            phone_number = request.POST.get('phone_number')
+    
+            TeacherModel.objects.create(
+                teacher_name = teacher_name,
+                email = email, 
+                phone_number = phone_number 
+            )
+    
+            return redirect('teacher_view')
+
+    return render(request, 'teacher.html')
+
+def teacher_view(request):
+
+     t_data = TeacherModel.objects.all()
+
+     context = {
+          't_data': t_data
+     }
+
+     return render(request, 'teacher_view.html', context)
+
+def teacher_update(request, t_id):
+
+    t_data =  TeacherModel.objects.get(id=t_id)
+
+    if request.method == 'POST':
+                teacher_name = request.POST.get('teacher_name')
+                email = request.POST.get('email')
+                phone_number = request.POST.get('phone_number')
+
+                t_data.teacher_name = teacher_name
+                t_data.email = email
+                t_data.phone_number = phone_number
+
+                t_data.save()
+
+                return redirect('teacher_view')
+
+    context = {
+          't_data':t_data
+    }   
+
+    return render(request, 'teacher_update.html', context) 
+
+def teacher_delete(request, t_id):
+      TeacherModel.objects.get(id = t_id).delete()
+      return redirect('teacher_view')
+
 #---------------Result----------------------------          
 
 def result_create(request):
