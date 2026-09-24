@@ -1,0 +1,47 @@
+{% extends 'master/base.html' %}
+
+
+{% block title %}
+        ELearning | Update Learners
+{% endblock title %}
+    
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center m-3">Update learner's Profiles Here</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Learner's Name</label>
+        <input type="text" name="student_name" value="{{s_data.student_name}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Learner's Image</label>
+                    {% if s_data.s_image %}
+                        <img src="/{{data.s_image}}" width="100px" alt="">    
+                    {% else %}
+                        No preview    
+                    {% endif %}
+        <input type="file" name="s_image" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Admission Date</label>
+        <input type="date" value="{{s_data.admission_date|date:'Y-m-d'}}" name="admission_date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Course Name</label>
+        <input type="text" name="course_name" value="{{s_data.course_name}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Course Fee</label>
+        <input type="number" name="course_fee" value="{{s_data.course_fee}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" step="0.01" min="0">
+    </div>
+    <div class="d-grid gap-2">
+    <button type="submit" class="btn btn-outline-primary text-primary">Submit</button>
+    </div>
+    </form>
+</div>
+    
+{% endblock content %}

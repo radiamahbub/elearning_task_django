@@ -68,3 +68,125 @@ def department_delete(request, d_id):
     DepartmentModel.objects.get(id=d_id).delete()
 
     return redirect('department_view')
+
+#----------------Student----------------------------
+
+def student_create(request):
+
+    if request.method == 'POST':
+            student_name = request.POST.get('student_name')
+            s_image = request.FILES.get('s_image')
+            admission_date = request.POST.get('admission_date')
+            course_name = request.POST.get('course_name')
+            course_fee = request.POST.get('course_fee')
+    
+            StudentModel.objects.create(
+                student_name = student_name,
+                s_image = s_image, 
+                admission_date = admission_date, 
+                course_name = course_name,
+                course_fee = course_fee, 
+            )
+    
+            return redirect('student_view')
+
+    return render(request, 'student.html')
+
+def student_view(request):
+
+     s_data = StudentModel.objects.all()
+
+     context = {
+          's_data': s_data
+     }
+
+     return render(request, 'student_view.html', context)
+
+def student_update(request, s_id):
+
+    s_data =  StudentModel.objects.get(id=s_id)
+
+    if request.method == 'POST':
+                student_name = request.POST.get('student_name')
+                s_image = request.FILES.get('s_image')
+                admission_date = request.POST.get('admission_date')
+                course_name = request.POST.get('course_name')
+                course_fee = request.POST.get('course_fee')
+
+                s_data.student_name = student_name
+                s_data.admission_date = admission_date
+                s_data.course_name = course_name
+                s_data.course_fee = course_fee
+
+                if s_image:
+                    s_data.s_image = s_image
+
+                s_data.save()
+
+                return redirect('student_view')
+
+    context = {
+          's_data':s_data
+    }   
+
+    return render(request, 'student_update.html', context)   
+
+def student_delete(request, s_id):
+      StudentModel.objects.get(id = s_id).delete()
+      return redirect('student_view')
+
+#---------------Result----------------------------          
+
+def result_create(request):
+
+    if request.method == 'POST':
+            student_name = request.POST.get('student_name')
+            marks = request.POST.get('marks')
+            grade = request.POST.get('grade')
+    
+            ResultModel.objects.create(
+                student_name = student_name,
+                marks = marks, 
+                grade = grade, 
+            )
+    
+            return redirect('result_view')
+
+    return render(request, 'result.html')
+
+def result_view(request):
+
+     r_data = ResultModel.objects.all()
+
+     context = {
+          'r_data': r_data
+     }
+
+     return render(request, 'result_view.html', context)
+
+def result_update(request, r_id):
+
+    r_data =  ResultModel.objects.get(id=r_id)
+
+    if request.method == 'POST':
+                student_name = request.POST.get('student_name')
+                marks = request.POST.get('marks')
+                grade = request.POST.get('grade')
+
+                r_data.student_name = student_name
+                r_data.marks = marks
+                r_data.grade = grade
+
+                r_data.save()
+
+                return redirect('result_view')
+
+    context = {
+          'r_data':r_data
+    }   
+
+    return render(request, 'result_update.html', context)   
+
+def result_delete(request, r_id):
+      ResultModel.objects.get(id = r_id).delete()
+      return redirect('result_view')

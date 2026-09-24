@@ -1,0 +1,50 @@
+{% extends 'master/base.html' %}
+
+
+{% block title %}
+        ELearning | Add Learners
+{% endblock title %}
+    
+
+{% block content %}
+
+<div class="container">
+<h1 class="text-center m-3">Add learners Here</h1>
+
+<p><a href="{% url 'student_view' %}">Click here to see all learners' profile</a></p>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Learner's Name</label>
+    <input type="text" name="student_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Learner's Image</label>
+    <input type="file" name="s_image" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Admission Date</label>
+    <input type="date" name="admission_date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Course Name</label>
+    <input type="text" name="course_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Course Fee</label>
+    <input type="number" name="course_fee" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="d-grid gap-2">
+  <button type="submit" class="btn btn-outline-primary text-primary">Submit</button>
+  </div>
+</form>
+
+
+</div>
+    
+{% endblock content %}
+
+
+{% comment %} 
+    <li><a href="{% url 'student_update' %}"></a></li> {% endcomment %}
