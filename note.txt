@@ -1,0 +1,33 @@
+Task-1: Create 5 Models with mentioned fields
+Task-2: Apply template mastering
+Task-3: Apply CRUD operation on Student model & Result Model
+
+
+
+Create 5 Models with below fields:
+Department Model
+ - department name
+ - description
+ - department head
+
+Course Model
+ - course title
+ - description
+ - image
+
+Student Model
+ - student name
+ - image
+ - admission date
+ - course name
+ - course fee
+
+Teacher Model
+ - teacher name
+ - email
+ - phone number
+
+Result model
+ - student name
+ - marks
+ - grade

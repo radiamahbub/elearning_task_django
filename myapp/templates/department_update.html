@@ -1,0 +1,35 @@
+{% extends 'master/base.html' %}
+
+{% block blockname %}
+            E-Learning | Home
+{% endblock blockname %}
+
+
+{% block content %}
+
+<h1 class="m-5 text-center">Update Department Info</h1>
+
+<form action="" method="POST">
+
+    {% csrf_token %}
+    
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Department Name</label>
+        <input type="text" name="department_name" value="{{d_data.department_name}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Description</label>
+        <textarea name="description" class="form-control" id=""> {{d_data.description}}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Department Head</label>
+        <input type="text" name="department_head" value="{{d_data.department_head}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </div>
+</form>
+    
+{% endblock content %}
+    
+    
