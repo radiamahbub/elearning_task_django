@@ -1,0 +1,47 @@
+{% extends 'master/base.html' %}
+
+
+{% block title %}
+        ELearning | Educators
+{% endblock title %}
+    
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center m-3">All Educators Proflie Here</h1>
+
+    <table class="table table-dark table-striped">
+
+        <thead>
+            <tr>
+                <th>Educator's Name</th>
+                <th>Email</th>
+                <th>Contact No.</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+                
+                {% for data in t_data %}
+                <tr>
+                <td>{{data.teacher_name}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.phone_number}}</td>>
+                <td>
+                    <a href="{% url 'teacher_update' data.id %}" class="text-info">Edit</a>
+                    <a href="{% url 'teacher_delete' data.id %}" class="text-danger">Remove</a>
+                </td>
+                </tr>
+                {% endfor %}
+            
+
+        </tbody>
+
+    </table>
+
+</div>
+    
+{% endblock content %}

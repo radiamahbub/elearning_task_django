@@ -1,0 +1,42 @@
+{% extends 'master/base.html' %}
+
+
+{% block title %}
+        ELearning | Add Courses
+{% endblock title %}
+    
+
+{% block content %}
+
+<div class="container">
+<h1 class="text-center m-3">Enter Courses here</h1>
+
+<p><a href="{% url 'course_view' %}">All courses</a></p>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Course Title</label>
+    <input type="text" name="course_title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Course Image</label>
+    <input type="file" name="c_image" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Description</label>
+    <textarea name="description" class="form-control" id=""></textarea>
+  </div>
+  <div class="d-grid gap-2">
+  <button type="submit" class="btn btn-outline-primary text-primary">Submit</button>
+  </div>
+</form>
+
+
+</div>
+    
+{% endblock content %}
+
+
+{% comment %} 
+    <li><a href="{% url 'student_update' %}"></a></li> {% endcomment %}

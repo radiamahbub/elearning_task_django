@@ -1,0 +1,34 @@
+{% extends 'master/base.html' %}
+
+
+{% block title %}
+        ELearning | Update Educators
+{% endblock title %}
+    
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center m-3">Update Educator's Profiles Here</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Educator's Name</label>
+        <input type="text" name="teacher_name" value="{{t_data.teacher_name}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="email" value="{{t_data.email}}" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Contact No</label>
+        <input type="number" name="phone_number" value="{{t_data.phone_number}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="d-grid gap-2">
+    <button type="submit" class="btn btn-outline-primary text-primary">Submit</button>
+    </div>
+    </form>
+</div>
+    
+{% endblock content %}

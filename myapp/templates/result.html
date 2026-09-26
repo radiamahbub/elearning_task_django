@@ -1,0 +1,42 @@
+{% extends 'master/base.html' %}
+
+
+{% block title %}
+        ELearning | Add Result
+{% endblock title %}
+    
+
+{% block content %}
+
+<div class="container">
+<h1 class="text-center m-3">Enter Learner's Results</h1>
+
+<p><a href="{% url 'student_view' %}">Result Dashborad</a></p>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Learner's Name</label>
+    <input type="text" name="student_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Marks</label>
+    <input type="number" name="marks" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Grade</label>
+    <input type="text" name="grade" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="d-grid gap-2">
+  <button type="submit" class="btn btn-outline-primary text-primary">Submit</button>
+  </div>
+</form>
+
+
+</div>
+    
+{% endblock content %}
+
+
+{% comment %} 
+    <li><a href="{% url 'student_update' %}"></a></li> {% endcomment %}

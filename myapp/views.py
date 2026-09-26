@@ -69,6 +69,65 @@ def department_delete(request, d_id):
 
     return redirect('department_view')
 
+#----------------Course-----------------------------
+
+def course_create(request):
+
+    if request.method == 'POST':
+            course_title = request.POST.get('course_title')
+            description = request.POST.get('description')
+            c_image = request.FILES.get('c_image')
+
+            CourseModel.objects.create(
+                course_title = course_title,
+                description = description, 
+                c_image = c_image,  
+            )
+    
+            return redirect('course_view')
+
+    return render(request, 'course.html')
+
+def course_view(request):
+
+     c_data = CourseModel.objects.all()
+
+     context = {
+          'c_data': c_data
+     }
+
+     return render(request, 'course_view.html', context)
+
+def course_update(request, c_id):
+
+    c_data =  CourseModel.objects.get(id=c_id)
+
+    if request.method == 'POST':
+                course_title = request.POST.get('course_title')
+                description = request.POST.get('description')
+                c_image = request.FILES.get('c_image')
+
+                c_data.course_title = course_title
+                c_data.description = description
+                c_data.c_image = c_image
+
+                if c_image:
+                    c_data.c_image = c_image
+
+                c_data.save()
+
+                return redirect('course_view')
+
+    context = {
+          'c_data':c_data
+    }   
+
+    return render(request, 'course_update.html', context)   
+
+def course_delete(request, c_id):
+      CourseModel.objects.get(id = c_id).delete()
+      return redirect('course_view')
+      
 #----------------Student----------------------------
 
 def student_create(request):

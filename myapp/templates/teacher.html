@@ -1,0 +1,42 @@
+{% extends 'master/base.html' %}
+
+
+{% block title %}
+        ELearning | Add Educators
+{% endblock title %}
+    
+
+{% block content %}
+
+<div class="container">
+<h1 class="text-center m-3">Add Educators Here</h1>
+
+<p><a href="{% url 'student_view' %}">All Educators' Profile Info</a></p>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Educator's Name</label>
+    <input type="text" name="teacher_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email</label>
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Contact</label>
+    <input type="number" name="phone_number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="d-grid gap-2">
+  <button type="submit" class="btn btn-outline-primary text-primary">Submit</button>
+  </div>
+</form>
+
+
+</div>
+    
+{% endblock content %}
+
+
+{% comment %} 
+    <li><a href="{% url 'student_update' %}"></a></li> {% endcomment %}

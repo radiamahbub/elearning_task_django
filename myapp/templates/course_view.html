@@ -1,0 +1,53 @@
+{% extends 'master/base.html' %}
+
+
+{% block title %}
+        ELearning | Learners
+{% endblock title %}
+    
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center m-3">All Learners Proflie Here</h1>
+
+    <table class="table table-dark table-striped">
+
+        <thead>
+            <tr>
+                <th>Course Title</th>
+                <th>Image</th>
+                <th>Details</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+                
+                {% for data in c_data %}
+                <tr>
+                <td>{{data.course_title}}</td>
+                <td>
+                    {% if data.c_image %}
+                        <img src="/{{data.c_image}}" width="100px" alt="">    
+                    {% else %}
+                        No preview    
+                    {% endif %}
+                </td>
+                <td>{{data.description}}</td>
+                <td>
+                    <a href="{% url 'course_update' data.id %}" class="text-info">Edit</a>
+                    <a href="{% url 'course_delete' data.id %}" class="text-danger">Remove</a>
+                </td>
+                </tr>
+                {% endfor %}
+            
+
+        </tbody>
+
+    </table>
+
+</div>
+    
+{% endblock content %}
